@@ -22,26 +22,35 @@ def userChoiceFunc(ls):
 
 
 def logic(user_Choice, compChoice):
+    gameWin = True
     if user_Choice == "Snake" and compChoice == "Water":
         print("User had chosen Snake and Computer had chosen Water")
         print("User has Won the Competition!")
+        gameWin = True
     elif compChoice == "Snake" and user_Choice == "Water":
         print("User had chosen Water and Computer had chosen Snake")
         print("Computer has Won the Competition!")
+        gameWin = False
     elif user_Choice == "Gun" and compChoice == "Snake":
         print("User had chosen Gun and Computer had chosen Snake")
         print("User has Won the Competition!")
+        gameWin = True
     elif compChoice == "Gun" and user_Choice == "Snake":
         print("User had chosen Snake and Computer had chosen Gun")
         print("Computer has Won the Competition!")
+        gameWin = False
     elif user_Choice == "Water" and compChoice == "Gun":
         print("User had chosen Water and Computer had chosen Gun")
         print("User has Won the Competition!")
+        gameWin = True
     elif compChoice == "Water" and user_Choice == "Gun":
         print("User had chosen Gun and Computer had chosen Water")
         print("Computer has Won the Competition!")
+        gameWin = False
     else:
         print("Match has been draw!")
+
+    return gameWin
 
 
 def game():
@@ -49,6 +58,21 @@ def game():
     compChoice = random.choice(ls)
     print("Computer has chosen its value. Now its your turn.")
     user_Choice = userChoiceFunc(ls)
-    logic(user_Choice, compChoice)
+    winner = logic(user_Choice, compChoice)
+    return winner
 
-game()
+def start():
+    user = 0
+    comp = 0
+    for i in range(10):
+        winner = game()
+        if winner == True: user += 1
+        else: comp += 1
+
+    print ("User have won ", user, " times.")
+    print("Computer have won ", comp, " times.")
+    if user > comp: print("User have won more games!")
+    elif comp > user: print("Computer have won more games!")
+    else: print("Both User and Computer won equal number of games!")
+
+start()
