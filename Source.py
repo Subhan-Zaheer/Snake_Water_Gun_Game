@@ -6,6 +6,11 @@ snake and gun, win = gun
 """
 import random
 def userChoiceFunc(ls):
+    """
+
+    :param ls: It is a list of option from which a user should choose one.
+    :return: User choice
+    """
     while True:
         choice = input("Press \'S\' for snake, \'W\' for water and \'G\' for gun : ")
         if choice == 's' or choice == 'S' or choice == 'w' or choice == 'W' or choice == 'g' or choice == 'G':
@@ -22,6 +27,14 @@ def userChoiceFunc(ls):
 
 
 def logic(user_Choice, compChoice):
+    """
+
+    :param user_Choice: It is user choice.
+    :param compChoice:  It is computer choice.
+    :return: This func will return the winner of one go.
+             If gamewin variable is True than User have won
+             and if it is false, then computer is winner.
+    """
     gameWin = True
     if user_Choice == "Snake" and compChoice == "Water":
         print("User had chosen Snake and Computer had chosen Water")
@@ -54,6 +67,11 @@ def logic(user_Choice, compChoice):
 
 
 def game():
+    """
+    nothing but it is helping user and computer to choose their option
+    and also running the logic of this game.
+    :return: It will return the winner of one go.
+    """
     ls = ["Snake", "Water", "Gun"]
     compChoice = random.choice(ls)
     print("Computer has chosen its value. Now its your turn.")
@@ -62,6 +80,10 @@ def game():
     return winner
 
 def start():
+    """
+    Just counting the number of wins of user and computer.
+    This func is returning void
+    """
     user = 0
     comp = 0
     for i in range(10):
@@ -74,5 +96,6 @@ def start():
     if user > comp: print("User have won more games!")
     elif comp > user: print("Computer have won more games!")
     else: print("Both User and Computer won equal number of games!")
+    return None
 
 start()
